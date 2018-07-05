@@ -1,5 +1,7 @@
-deployment:
-   prod:
-      branch: master
-      heroku:
-         appname: coba-hero
+version: 2
+jobs:
+   deployment:
+      prod:
+         branch: master
+         heroku:
+            appname: coba-hero
