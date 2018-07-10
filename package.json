@@ -1,19 +1,13 @@
 {
   "name": "learn-circleci_heroku",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node.js on Docker",
+  "author": "First Last <amanualt@merahputih.id>",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/amanualt/learn-circleci_heroku.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/amanualt/learn-circleci_heroku/issues"
-  },
-  "homepage": "https://github.com/amanualt/learn-circleci_heroku#readme"
+  "dependencies": {
+    "express": "^4.16.1"
+  }
 }
