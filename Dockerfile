@@ -1,5 +1,10 @@
-FROM nginx:alpine
+FROM node:carbon
 
-RUN rm -f /usr/share/nginx/html/*
+WORKDIR /usr/src/app
 
-ADD index.html /usr/share/nginx/html/
+COPY . .
+
+RUN npm install
+
+EXPOSE 3000
+CMD [ "npm", "start" ]
