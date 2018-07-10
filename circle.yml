@@ -1,7 +1,24 @@
 version: 2
 jobs:
-   deployment:
-      prod:
-         branch: master
-         heroku:
-            appname: coba-hero
+  build:
+    docker:
+      - image: nginx:alpine
+
+   steps:
+     - checkout
+
+      - run
+          name: Build Docker image
+          command: docker build -t amanu/coba-hero:$CIRCLE_SHA1 .
+      - run
+          name: Push to DockerHub
+          command: |
+            docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
+            docker push amanu/coba-hero:$CIRCLE_SHA1
+
+      - run
+          name: Deploy to heroku
+          command: |
+            docker login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroku.com
+            docker tag amanu/coba-hero:$CIRCLE_SHA1 registry.heroku.com/$HEROKU_APP_NAME/
+            docker push registry.heroku.com/$HEROKU_APP_NAME/
